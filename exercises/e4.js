@@ -22,13 +22,14 @@ const second = (val) => {
 
 // Refactor the following code...
 export const handlePromise = first();
-const secondPromise = handlePromise.then((val) => val);
-const final = secondPromise.then((res) => second(res));
-final.then((val) => {
-  console.log(val);
-  return val;
-});
 
+handlePromise.then((val) => second(val))
+  .then((res) => res)
+  .catch((err) => err)
+  //why does this keep giving me an 'Unhandled Rejection' no matter what I do???(with or without .catch())
+  //I logged the second .then() and it logs 10 which is the expected value.. please provide feedback... 
+
+  
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-4"
 // If the test has all tests passed, switch to the next exercise file
